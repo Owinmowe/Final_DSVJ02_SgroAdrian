@@ -264,6 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa06ffb1465c5a40ab6c4bfd80d980a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxArmor: 100
+  maxShield: 50
   bodyMovementSpeed: 5
   bodyRotationSpeed: 1
   weapon: {fileID: 964128424}

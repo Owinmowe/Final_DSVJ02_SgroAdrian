@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class WeaponComponent : MonoBehaviour
+namespace MarsArena
 {
-    public void Shoot(Vector3 dir)
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+
+    public class WeaponComponent : MonoBehaviour
     {
-        Debug.Log("Shoot to direction: " + dir);
+        public void Shoot(Vector3 dir)
+        {
+            Debug.Log("Shoot to direction: " + dir);
+        }
     }
 }
