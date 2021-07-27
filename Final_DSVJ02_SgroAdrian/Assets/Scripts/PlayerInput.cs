@@ -5,6 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Tank))]
 public class PlayerInput : MonoBehaviour
 {
+    [Header("Cursor Configurations")]
+    [SerializeField] LayerMask shootMask = default;
+    [SerializeField] float maxCheckDistance = 100f;
+
     Tank tankComponent = null;
     // Start is called before the first frame update
 
@@ -25,6 +29,19 @@ public class PlayerInput : MonoBehaviour
         if(Mathf.Abs(hor) > 0)
         {
             tankComponent.Rotate(hor);
+        }
+        if (Input.GetMouseButton(0))
+        {
+            float x = Input.GetAxis("Mouse X");
+            float y = Input.GetAxis("Mouse Y");
+            Vector3 mousePos = Input.mousePosition;
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+
+            RaycastHit hit;
+            if(Physics.Raycast(ray, out hit, maxCheckDistance, shootMask))
+            {
+                tankComponent.TryToShoot(hit.point);
+            }
         }
     }
 }
