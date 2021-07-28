@@ -1,17 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1648018052871283940
-MonoBehaviour:
+--- !u!1 &1389272808
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4083647951815457468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 778d9fc62b35ffe4b8aee71d9a87c415, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1389272809}
+  m_Layer: 7
+  m_Name: Projectile Spawn Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1389272809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389272808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.391}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4006185371694205187}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1648018054625212310
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,7 +42,6 @@ GameObject:
   - component: {fileID: 1648018054625212309}
   - component: {fileID: 1648018054625212335}
   - component: {fileID: 1648018054625212305}
-  - component: {fileID: 1648018054625212307}
   - component: {fileID: 1648018054625212308}
   m_Layer: 7
   m_Name: Player Tank
@@ -93,18 +110,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   maxCheckDistance: 100
---- !u!114 &1648018054625212307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648018054625212310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 778d9fc62b35ffe4b8aee71d9a87c415, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1648018054625212308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +128,22 @@ MonoBehaviour:
   bodyRotationSpeed: 1
   weapon: {fileID: 1648018052871283940}
   turretRotationSpeed: 5
+--- !u!114 &1648018052871283940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4083647951815457468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778d9fc62b35ffe4b8aee71d9a87c415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponsConfigs:
+  - {fileID: 11400000, guid: 02ebe13a48109da499ff3b9d3a2fb1e6, type: 2}
+  projectileSpawnPosition: {fileID: 1389272809}
+  projectileColor: {r: 0, g: 0.6212287, b: 1, a: 1}
 --- !u!1001 &1648018053030410822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,6 +207,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7427572543938155892, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4921562950278074120, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4795016619131944688, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -4304332960676913862, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -226,6 +259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank Mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2903726177176156928, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -238,6 +275,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: dcc3db74656f5ec4cbac4875eba4a7da, type: 2}
+    - target: {fileID: 3346992135021314298, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297860227382528515, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622495399675592730, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
 --- !u!4 &1248718437118877101 stripped
@@ -248,5 +297,10 @@ Transform:
 --- !u!1 &4083647951815457468 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3346992135021314298, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
+  m_PrefabInstance: {fileID: 1648018053030410822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4006185371694205187 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2397669748138439493, guid: 79b64f8d161dc5d488648093b2ad70ca, type: 3}
   m_PrefabInstance: {fileID: 1648018053030410822}
   m_PrefabAsset: {fileID: 0}

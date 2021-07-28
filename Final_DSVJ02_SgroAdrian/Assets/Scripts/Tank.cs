@@ -16,7 +16,7 @@ namespace MarsArena
         [SerializeField] float bodyMovementSpeed = 5f;
         [SerializeField] float bodyRotationSpeed = 1f;
 
-        [Header("Turret Movement")]
+        [Header("Turret Related")]
         [SerializeField] WeaponComponent weapon = null;
         [SerializeField] float turretRotationSpeed = 1f;
         IEnumerator rotationCoroutine = null;
