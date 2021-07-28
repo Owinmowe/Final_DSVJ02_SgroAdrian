@@ -32,7 +32,7 @@ namespace MarsArena
             {
                 tankComponent.Rotate(hor);
             }
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 float x = Input.GetAxis("Mouse X");
                 float y = Input.GetAxis("Mouse Y");
