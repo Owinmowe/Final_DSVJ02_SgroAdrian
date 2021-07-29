@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3322977448210902467}
   - component: {fileID: 3322977448210902466}
   - component: {fileID: 3322977448210902464}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Pylon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d874b552740694bb0a64d64b7df51d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxArmor: 100
+  maxArmor: 12.5
 --- !u!1 &3990396111185391626
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 8467428067660674221}
   - component: {fileID: 2515696470023939018}
   - component: {fileID: 1773218691296835706}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Orbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -160,7 +159,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8835505282446798384
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +170,7 @@ GameObject:
   - component: {fileID: 2989227028066590777}
   - component: {fileID: 7765885583009833081}
   - component: {fileID: 8525297894790457525}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +214,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -241,4 +238,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}

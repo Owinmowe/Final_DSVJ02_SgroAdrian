@@ -15,6 +15,9 @@ namespace MarsArena
         [Header("Body Movement")]
         [SerializeField] float bodyMovementSpeed = 5f;
         [SerializeField] float bodyRotationSpeed = 1f;
+        [SerializeField] float groundCorrectionSpeed = 5f;
+        [SerializeField] float groundCheckDistance = 5f;
+        [SerializeField] LayerMask groundLayer = default;
 
         [Header("Turret Related")]
         [SerializeField] WeaponComponent weapon = null;
@@ -36,6 +39,21 @@ namespace MarsArena
         {
             Quaternion rotation = Quaternion.AngleAxis(hor * bodyRotationSpeed, transform.up);
             transform.rotation *= rotation;
+        }
+
+        void Update()
+        {
+            AlignWithGround();
+        }
+
+        private void AlignWithGround()
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+            {
+                Quaternion qTo = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+                transform.rotation = Quaternion.Slerp(transform.rotation, qTo, groundCorrectionSpeed * Time.deltaTime);
+            }
         }
 
         public void TryToShoot(Vector3 dir)
