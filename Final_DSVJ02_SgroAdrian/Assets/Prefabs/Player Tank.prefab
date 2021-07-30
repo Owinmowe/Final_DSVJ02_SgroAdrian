@@ -109,7 +109,7 @@ MonoBehaviour:
   shootMask:
     serializedVersion: 2
     m_Bits: 3072
-  maxCheckDistance: 200
+  maxCheckDistance: 100
 --- !u!114 &1648018054625212308
 MonoBehaviour:
   m_ObjectHideFlags: 0

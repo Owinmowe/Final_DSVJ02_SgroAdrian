@@ -1,15 +1,17 @@
 namespace MarsArena
 {
-    using System.Collections;
-    using System.Collections.Generic;
+    using System;
     using UnityEngine;
 
     public class Pylon : MonoBehaviour, IDamageable
     {
-        [SerializeField] float maxArmor;
+        [SerializeField] int pointsOnDestroy = 100;
+        [SerializeField] float maxArmor = 100;
         float currentArmor;
 
         Animator anim;
+
+        public Action<int> OnDestroy;
 
         private void Awake()
         {
@@ -23,6 +25,7 @@ namespace MarsArena
             if(currentArmor < 0)
             {
                 anim.SetTrigger("Destroy");
+                OnDestroy?.Invoke(pointsOnDestroy);
             }
             else
             {
