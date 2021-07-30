@@ -43,6 +43,7 @@ namespace MarsArena
         {
             currentArmor = maxArmor;
             currentShield = maxShield;
+            StartCoroutine(ShieldRecovery());
         }
 
         public void Move(float ver)
@@ -105,7 +106,7 @@ namespace MarsArena
             {
                 if(currentShield < maxShield)
                 {
-                    currentShield += shieldRecoverSpeed;
+                    currentShield += shieldRecoverSpeed * Time.deltaTime;
                     currentShield = Mathf.Clamp(currentShield, 0, maxShield);
                     OnLifeChanged?.Invoke(currentArmor, currentShield);
                 }
