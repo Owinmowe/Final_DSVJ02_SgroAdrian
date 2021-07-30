@@ -1,16 +1,21 @@
 namespace MarsArena
 {
+    using System;
     using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
 
     public class Tank : MonoBehaviour, IDamageable
     {
-        [Header("Game Stats")]
+        [Header("Armor Related")]
         [SerializeField] float maxArmor = 100f;
-        [SerializeField] float maxShield = 50f;
         float currentArmor = 0;
+        bool destroyed = false;
+
+        [Header("Shield Related")]
+        [SerializeField] float maxShield = 50f;
+        [SerializeField] float shieldRecoverSpeed = .5f;
         float currentShield = 0;
+        bool shieldWorking = true;
 
         [Header("Body Movement")]
         [SerializeField] float bodyMovementSpeed = 5f;
@@ -24,6 +29,16 @@ namespace MarsArena
         [SerializeField] float turretRotationSpeed = 1f;
         IEnumerator rotationCoroutine = null;
 
+        Animator anim;
+
+        public Action OnDestroy;
+        public Action<float, float> OnLifeChanged;
+
+        private void Awake()
+        {
+            anim = GetComponent<Animator>();
+        }
+
         private void Start()
         {
             currentArmor = maxArmor;
@@ -32,11 +47,13 @@ namespace MarsArena
 
         public void Move(float ver)
         {
+            if (destroyed) return;
             transform.position += bodyMovementSpeed * ver * transform.forward * Time.deltaTime;
         }
 
         public void Rotate(float hor)
         {
+            if (destroyed) return;
             Quaternion rotation = Quaternion.AngleAxis(hor * bodyRotationSpeed, transform.up);
             transform.rotation *= rotation;
         }
@@ -49,7 +66,7 @@ namespace MarsArena
         private void AlignWithGround()
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+            if (Physics.Raycast(transform.position, -Vector3.up, out hit, groundCheckDistance, groundLayer))
             {
                 Quaternion qTo = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
                 transform.rotation = Quaternion.Slerp(transform.rotation, qTo, groundCorrectionSpeed * Time.deltaTime);
@@ -82,6 +99,20 @@ namespace MarsArena
             weapon.Shoot(dir);
         }
 
+        IEnumerator ShieldRecovery()
+        {
+            while (shieldWorking)
+            {
+                if(currentShield < maxShield)
+                {
+                    currentShield += shieldRecoverSpeed;
+                    currentShield = Mathf.Clamp(currentShield, 0, maxShield);
+                    OnLifeChanged?.Invoke(currentArmor, currentShield);
+                }
+                yield return null;
+            }
+        }
+
         public void TakeDamage(float damage)
         {
             if (currentShield > 0)
@@ -90,12 +121,24 @@ namespace MarsArena
                 if (currentShield < 0)
                 {
                     currentArmor -= currentShield;
+                    shieldWorking = false;
+                    anim.SetTrigger("Shield Destroyed");
+                }
+                else
+                {
+                    anim.SetTrigger("Shield Hit");
                 }
             }
             else
             {
                 currentArmor -= damage;
+                if (currentArmor < 0)
+                {
+                    anim.SetTrigger("Body Destroyed");
+                    OnDestroy?.Invoke();
+                }
             }
+
         }
 
     }

@@ -190,6 +190,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa06ffb1465c5a40ab6c4bfd80d980a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &921309211
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921309209}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b22efcf5ab590ab449fa06b4f2991572, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &921309214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1648018054625212306, guid: 0baf3cb2a24a51346b3a9d32b91251d7,
@@ -461,7 +480,7 @@ GameObject:
   - component: {fileID: 1771628195}
   - component: {fileID: 1771628194}
   m_Layer: 9
-  m_Name: Sphere
+  m_Name: Shield Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -589,6 +608,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648018054625212308, guid: 0baf3cb2a24a51346b3a9d32b91251d7,
+        type: 3}
+      propertyPath: shieldColor.b
+      value: 0.6981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648018054625212308, guid: 0baf3cb2a24a51346b3a9d32b91251d7,
+        type: 3}
+      propertyPath: shieldColor.g
+      value: 0.036222856
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648018054625212308, guid: 0baf3cb2a24a51346b3a9d32b91251d7,
+        type: 3}
+      propertyPath: shieldColor.r
+      value: 0.05129721
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648018054625212308, guid: 0baf3cb2a24a51346b3a9d32b91251d7,
+        type: 3}
+      propertyPath: shieldRenderer
+      value: 
+      objectReference: {fileID: 1771628194}
+    - target: {fileID: 1648018054625212308, guid: 0baf3cb2a24a51346b3a9d32b91251d7,
+        type: 3}
+      propertyPath: shieldIntensity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1648018054625212310, guid: 0baf3cb2a24a51346b3a9d32b91251d7,
         type: 3}
