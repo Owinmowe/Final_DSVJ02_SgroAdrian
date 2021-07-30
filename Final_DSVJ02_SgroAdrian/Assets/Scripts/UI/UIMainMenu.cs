@@ -12,19 +12,38 @@
 
             [SerializeField] UIAnimationComponent mainMenuAnimationComponent = null;
             [SerializeField] UIAnimationComponent creditsAnimationComponent = null;
+            [SerializeField] float transitionSpeed = .2f;
 
             // Start is called before the first frame update
             void Start()
+            {
+                mainMenuAnimationComponent.SetTransitionSpeed(transitionSpeed);
+                creditsAnimationComponent.SetTransitionSpeed(transitionSpeed);
+                mainMenuAnimationComponent.TransitionIn();
+            }
+
+            public void OpenCredits()
+            {
+                mainMenuAnimationComponent.TransitionOut();
+                creditsAnimationComponent.TransitionIn();
+            }
+
+            public void BackToTheMenu()
             {
                 mainMenuAnimationComponent.TransitionIn();
                 creditsAnimationComponent.TransitionOut();
             }
 
-            // Update is called once per frame
-            void Update()
+            public void PlayGame()
             {
-
+                mainMenuAnimationComponent.TransitionOut();
             }
+
+            public void ExitGame()
+            {
+                Application.Quit();
+            }
+
         }
     }
 }

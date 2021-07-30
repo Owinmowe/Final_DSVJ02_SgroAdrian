@@ -33,6 +33,12 @@
             {
                 anim.SetTrigger("Transition Out");
             }
+
+            public void SetTransitionSpeed(float speed)
+            {
+                anim.SetFloat("Transition Speed", speed);
+            }
+
         }
     }
 }

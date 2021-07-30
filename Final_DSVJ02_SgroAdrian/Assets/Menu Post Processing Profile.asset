@@ -18,13 +18,13 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 32.88
+    value: 4.5
   threshold:
     overrideState: 1
     value: 1.1
   softKnee:
     overrideState: 1
-    value: 0.55
+    value: 0.859
   clamp:
     overrideState: 0
     value: 65472
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
-  m_Name: Post Processing Profile
+  m_Name: Menu Post Processing Profile
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -3186676039690201993}
