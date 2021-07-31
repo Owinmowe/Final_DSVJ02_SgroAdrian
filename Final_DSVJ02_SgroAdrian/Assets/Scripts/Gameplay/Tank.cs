@@ -23,6 +23,7 @@ namespace MarsArena
         [SerializeField] float groundCorrectionSpeed = 5f;
         [SerializeField] float groundCheckDistance = 5f;
         [SerializeField] LayerMask groundLayer = default;
+        float currentMovementAmount = 0;
 
         [Header("Turret Related")]
         [SerializeField] WeaponComponent weapon = null;
@@ -32,7 +33,9 @@ namespace MarsArena
         Animator anim;
 
         public Action OnDestroy;
+        public Action OnBodyDamage;
         public Action<float, float> OnLifeChanged;
+        public Action<float> OnMove;
 
         private void Awake()
         {
@@ -49,7 +52,10 @@ namespace MarsArena
         public void Move(float ver)
         {
             if (destroyed) return;
-            transform.position += bodyMovementSpeed * ver * transform.forward * Time.deltaTime;
+            Vector3 movementVector = bodyMovementSpeed * ver * transform.forward * Time.deltaTime;
+            transform.position += movementVector;
+            currentMovementAmount += movementVector.magnitude;
+            OnMove?.Invoke(currentMovementAmount);
         }
 
         public void Rotate(float hor)
@@ -137,6 +143,10 @@ namespace MarsArena
                 {
                     anim.SetTrigger("Body Destroyed");
                     OnDestroy?.Invoke();
+                }
+                else
+                {
+                    OnBodyDamage?.Invoke();
                 }
             }
 

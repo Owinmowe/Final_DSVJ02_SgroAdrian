@@ -11,12 +11,22 @@
 
         [SerializeField] Terrain marsTerrain = null;
         [SerializeField] Tank playerTank = null;
+
         [Header("Pylons")]
         [SerializeField] GameObject pylonPrefab = null;
+        [SerializeField] Transform pylonParent = null;
         [SerializeField] int startingPylonsAmount = 50;
-        [SerializeField] float groundOffset = .75f;
-        [SerializeField] float maxDistanceSpawnFromCenter = 450;
+        [SerializeField] float pylonGroundOffset = .75f;
+        [SerializeField] float pylonMaxDistanceSpawn = 450;
 
+        [Header("Enemy Tanks")]
+        [SerializeField] GameObject enemyTanksPrefab = null;
+        [SerializeField] Transform tanksParent = null;
+        [SerializeField] int startingTanksAmount = 50;
+        [SerializeField] float tanksGroundOffset = .75f;
+        [SerializeField] float tanksMaxDistanceSpawn = 450;
+
+        public Action OnPlayerDestroyed;
         public Action<int> OnEnemyDestroyed;
         public Action<float, float> OnPlayerLifeChanged;
 
@@ -31,12 +41,38 @@
             {
                 CreatePylon();
             }
+
+            for (int i = 0; i < startingTanksAmount; i++)
+            {
+                CreateEnemyTank();
+            }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
 
+        private void CreatePylon()
+        {
+            GameObject go = CreateEntity(pylonPrefab, pylonParent, pylonMaxDistanceSpawn, pylonGroundOffset);
+            go.GetComponent<Pylon>().OnDestroy += EnemyDestroyed;
+        }
+
+        private void CreateEnemyTank()
+        {
+            GameObject go = CreateEntity(enemyTanksPrefab, tanksParent, tanksMaxDistanceSpawn, tanksGroundOffset);
+            //go.GetComponent<Tank>().OnDestroy += EnemyDestroyed;
+        }
+
+        GameObject CreateEntity(GameObject prefab, Transform parent, float maxSpawnDis, float groundOffset = 0)
+        {
+            Vector3 pos = UnityEngine.Random.insideUnitSphere;
+            pos *= maxSpawnDis;
+            pos.x += marsTerrain.terrainData.size.x / 2;
+            pos.z += marsTerrain.terrainData.size.z / 2;
+            pos.y = marsTerrain.SampleHeight(pos) + groundOffset;
+            var go = Instantiate(prefab, pos, Quaternion.identity, parent);
+            RaycastHit hit;
+            Physics.Raycast(go.transform.position, -go.transform.up, out hit);
+            go.transform.up = hit.normal;
+            return go;
         }
 
         void EnemyDestroyed(int pointsGot)
@@ -44,23 +80,9 @@
             OnEnemyDestroyed?.Invoke(pointsGot);
         }
 
-        private void CreatePylon()
-        {
-            Vector3 pos = UnityEngine.Random.insideUnitSphere;
-            pos *= maxDistanceSpawnFromCenter;
-            pos.x += marsTerrain.terrainData.size.x / 2;
-            pos.z += marsTerrain.terrainData.size.z / 2;
-            pos.y = marsTerrain.SampleHeight(pos) + groundOffset;
-            var go = Instantiate(pylonPrefab, pos, Quaternion.identity, transform);
-            RaycastHit hit;
-            Physics.Raycast(go.transform.position, -go.transform.up, out hit);
-            go.transform.up = hit.normal;
-            go.GetComponent<Pylon>().OnDestroy += EnemyDestroyed;
-        }
-
         void PlayerDestroyed()
         {
-
+            OnPlayerDestroyed?.Invoke();
         }
         
         void PlayerLifeChanged(float armor, float shield)
