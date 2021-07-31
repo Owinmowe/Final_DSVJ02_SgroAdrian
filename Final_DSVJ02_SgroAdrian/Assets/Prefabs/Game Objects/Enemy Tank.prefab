@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 6409398318440938661}
   - component: {fileID: 6409398318440938655}
   - component: {fileID: 6409398318440938660}
+  - component: {fileID: 4729375179450291991}
   - component: {fileID: 5632928359968135979}
   m_Layer: 10
   m_Name: Enemy Tank
@@ -196,6 +197,18 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &4729375179450291991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6409398318440938662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eab96e3f60e1774a959c3d7e5e15ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   weapon: {fileID: 6409398316704411604}
   turretRotationSpeed: 5
 --- !u!95 &5632928359968135979

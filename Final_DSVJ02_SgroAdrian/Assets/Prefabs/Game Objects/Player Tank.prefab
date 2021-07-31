@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 1648018054625212305}
   - component: {fileID: 1648018054625212308}
   - component: {fileID: 921309211}
+  - component: {fileID: 5564208022366995972}
   m_Layer: 9
   m_Name: Player Tank
   m_TagString: Untagged
@@ -213,8 +214,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 2048
-  weapon: {fileID: 1648018052871283940}
-  turretRotationSpeed: 5
 --- !u!95 &921309211
 Animator:
   serializedVersion: 3
@@ -234,6 +233,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5564208022366995972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648018054625212310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eab96e3f60e1774a959c3d7e5e15ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 1648018052871283940}
+  turretRotationSpeed: 1
 --- !u!114 &1648018052871283940
 MonoBehaviour:
   m_ObjectHideFlags: 0

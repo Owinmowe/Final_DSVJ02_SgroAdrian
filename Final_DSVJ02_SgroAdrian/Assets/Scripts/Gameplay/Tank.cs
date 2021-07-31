@@ -4,6 +4,7 @@ namespace MarsArena
     using System.Collections;
     using UnityEngine;
 
+    [RequireComponent(typeof(Turret))]
     public class Tank : MonoBehaviour, IDamageable
     {
         [Header("Armor Related")]
@@ -25,10 +26,7 @@ namespace MarsArena
         [SerializeField] LayerMask groundLayer = default;
         float currentMovementAmount = 0;
 
-        [Header("Turret Related")]
-        [SerializeField] WeaponComponent weapon = null;
-        [SerializeField] float turretRotationSpeed = 1f;
-        IEnumerator rotationCoroutine = null;
+        Turret turretComponent = null;
 
         Animator anim;
 
@@ -40,6 +38,7 @@ namespace MarsArena
         private void Awake()
         {
             anim = GetComponent<Animator>();
+            turretComponent = GetComponent<Turret>();
         }
 
         private void Start()
@@ -82,28 +81,7 @@ namespace MarsArena
 
         public void TryToShoot(Vector3 dir)
         {
-            if (rotationCoroutine != null)
-            {
-                StopCoroutine(rotationCoroutine);
-            }
-            rotationCoroutine = AimTurret(dir);
-            StartCoroutine(rotationCoroutine);
-        }
-
-        IEnumerator AimTurret(Vector3 dir)
-        {
-            Quaternion startingRotation = weapon.transform.rotation;
-            Quaternion finalRotation = Quaternion.identity;
-            Vector3 aimDirection = dir - weapon.transform.position;
-            finalRotation.SetLookRotation(aimDirection, transform.up);
-            float t = 0;
-            while (t < 1)
-            {
-                weapon.transform.rotation = Quaternion.Slerp(startingRotation, finalRotation, t);
-                t += Time.deltaTime * turretRotationSpeed;
-                yield return null;
-            }
-            weapon.Shoot(dir);
+            turretComponent.AimToShoot(dir);
         }
 
         IEnumerator ShieldRecovery()

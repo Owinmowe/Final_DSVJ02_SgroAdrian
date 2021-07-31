@@ -22,9 +22,16 @@
         [Header("Enemy Tanks")]
         [SerializeField] GameObject enemyTanksPrefab = null;
         [SerializeField] Transform tanksParent = null;
-        [SerializeField] int startingTanksAmount = 50;
+        [SerializeField] int startingTanksAmount = 10;
         [SerializeField] float tanksGroundOffset = .75f;
         [SerializeField] float tanksMaxDistanceSpawn = 450;
+
+        [Header("Enemy Turrets")]
+        [SerializeField] GameObject enemyTurretsPrefab = null;
+        [SerializeField] Transform turretsParent = null;
+        [SerializeField] int startingTurretsAmount = 20;
+        [SerializeField] float turretsGroundOffset = 2f;
+        [SerializeField] float turretsMaxDistanceSpawn = 450;
 
         public Action OnPlayerDestroyed;
         public Action<int> OnEnemyDestroyed;
@@ -46,6 +53,11 @@
             {
                 CreateEnemyTank();
             }
+
+            for (int i = 0; i < startingTurretsAmount; i++)
+            {
+                CreateEnemyTurret();
+            }
         }
 
 
@@ -58,6 +70,13 @@
         private void CreateEnemyTank()
         {
             GameObject go = CreateEntity(enemyTanksPrefab, tanksParent, tanksMaxDistanceSpawn, tanksGroundOffset);
+            //go.GetComponent<Tank>().OnDestroy += EnemyDestroyed;
+        }
+
+        private void CreateEnemyTurret()
+        {
+            GameObject go = CreateEntity(enemyTurretsPrefab, turretsParent, turretsMaxDistanceSpawn, turretsGroundOffset);
+            go.GetComponent<TurretAI>().SetPlayerTransform(playerTank.transform);
             //go.GetComponent<Tank>().OnDestroy += EnemyDestroyed;
         }
 
@@ -87,7 +106,7 @@
         
         void PlayerLifeChanged(float armor, float shield)
         {
-            OnPlayerLifeChanged(armor, shield);
+            OnPlayerLifeChanged?.Invoke(armor, shield);
         }
 
     }

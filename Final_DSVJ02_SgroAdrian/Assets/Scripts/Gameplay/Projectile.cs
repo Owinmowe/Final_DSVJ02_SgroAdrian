@@ -8,7 +8,7 @@ namespace MarsArena
     {
         [SerializeField] List<Renderer> rendersToColorize = null;
         [Header("On Impact")]
-        [SerializeField] GameObject particlesGO;
+        [SerializeField] GameObject particlesGO = null;
         [SerializeField] float timeToDestroy = 5f;
         float contactDamage = 1;
         Rigidbody rb = null;

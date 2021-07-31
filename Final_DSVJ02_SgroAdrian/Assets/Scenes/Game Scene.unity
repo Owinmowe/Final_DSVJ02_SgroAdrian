@@ -192,9 +192,15 @@ MonoBehaviour:
   enemyTanksPrefab: {fileID: 6409398318440938662, guid: 34468e02f4459e749ad4b42f4ec6d133,
     type: 3}
   tanksParent: {fileID: 1985135521}
-  startingTanksAmount: 25
+  startingTanksAmount: 10
   tanksGroundOffset: 0.75
   tanksMaxDistanceSpawn: 400
+  enemyTurretsPrefab: {fileID: 5935794697305206935, guid: d9ac950f0430f0845a8321a68eae0478,
+    type: 3}
+  turretsParent: {fileID: 417156024}
+  startingTurretsAmount: 20
+  turretsGroundOffset: 1
+  turretsMaxDistanceSpawn: 450
 --- !u!4 &292346222
 Transform:
   m_ObjectHideFlags: 0
@@ -208,8 +214,39 @@ Transform:
   m_Children:
   - {fileID: 247686733}
   - {fileID: 1985135521}
+  - {fileID: 417156024}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &417156023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417156024}
+  m_Layer: 0
+  m_Name: Enemy Turrets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &417156024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417156023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 292346222}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &921309209 stripped
 GameObject:
@@ -482,90 +519,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1653117663
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.10000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.10000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.56539
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039314178, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8071183742039675692, guid: ede3b216ec716e848906c2cb7a69d596,
-        type: 3}
-      propertyPath: m_Name
-      value: Electric Spark
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ede3b216ec716e848906c2cb7a69d596, type: 3}
 --- !u!1001 &1689274246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -736,6 +689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564208022366995972, guid: 0baf3cb2a24a51346b3a9d32b91251d7,
+        type: 3}
+      propertyPath: turretRotationSpeed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0baf3cb2a24a51346b3a9d32b91251d7, type: 3}
