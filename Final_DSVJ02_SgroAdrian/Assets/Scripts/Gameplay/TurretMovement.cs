@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class Turret : MonoBehaviour
+    public class TurretMovement : MonoBehaviour
     {
         [SerializeField] WeaponComponent weapon = null;
         [SerializeField] float turretRotationSpeed = 1f;

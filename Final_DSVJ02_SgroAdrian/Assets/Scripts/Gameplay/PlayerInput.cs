@@ -4,19 +4,19 @@ namespace MarsArena
     using System.Collections.Generic;
     using UnityEngine;
 
-    [RequireComponent(typeof(Tank))]
+    [RequireComponent(typeof(TankMovement))]
     public class PlayerInput : MonoBehaviour
     {
         [Header("Cursor Configurations")]
         [SerializeField] LayerMask shootMask = default;
         [SerializeField] float maxCheckDistance = 100f;
 
-        Tank tankComponent = null;
+        TankMovement tankComponent = null;
         // Start is called before the first frame update
 
         private void Awake()
         {
-            tankComponent = GetComponent<Tank>();
+            tankComponent = GetComponent<TankMovement>();
         }
 
         // Update is called once per frame

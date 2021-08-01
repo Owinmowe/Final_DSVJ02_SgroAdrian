@@ -10,7 +10,7 @@
     {
 
         [SerializeField] Terrain marsTerrain = null;
-        [SerializeField] Tank playerTank = null;
+        [SerializeField] TankMovement playerTank = null;
 
         [Header("Pylons")]
         [SerializeField] GameObject pylonPrefab = null;
@@ -34,14 +34,17 @@
         [SerializeField] float turretsMaxDistanceSpawn = 450;
 
         public Action OnPlayerDestroyed;
+        public Action<float> OnPlayerMoved;
         public Action<int> OnEnemyDestroyed;
         public Action<float, float> OnPlayerLifeChanged;
 
         // Start is called before the first frame update
         void Start()
         {
-            playerTank.OnDestroy += PlayerDestroyed;
-            playerTank.OnLifeChanged += PlayerLifeChanged;
+            playerTank.OnMove += PlayerMoved;
+            var playerDestructableComponent = playerTank.GetComponent<DestructableComponent>();
+            playerDestructableComponent.OnDestroy += PlayerDestroyed;
+            playerDestructableComponent.OnLifeChanged += PlayerLifeChanged;
 
 
             for (int i = 0; i < startingPylonsAmount; i++)
@@ -64,7 +67,7 @@
         private void CreatePylon()
         {
             GameObject go = CreateEntity(pylonPrefab, pylonParent, pylonMaxDistanceSpawn, pylonGroundOffset);
-            go.GetComponent<Pylon>().OnDestroy += EnemyDestroyed;
+            go.GetComponent<PylonAI>().PylonDestroyed += EnemyDestroyed;
         }
 
         private void CreateEnemyTank()
@@ -107,6 +110,11 @@
         void PlayerLifeChanged(float armor, float shield)
         {
             OnPlayerLifeChanged?.Invoke(armor, shield);
+        }
+
+        void PlayerMoved(float moveAmount)
+        {
+            OnPlayerMoved?.Invoke(moveAmount);
         }
 
     }

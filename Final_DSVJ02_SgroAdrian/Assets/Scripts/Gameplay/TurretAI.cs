@@ -5,18 +5,32 @@
     using System.Collections.Generic;
     using UnityEngine;
 
-    [RequireComponent(typeof(Turret))]
+    [RequireComponent(typeof(TurretMovement), typeof(DestructableComponent))]
     public class TurretAI : MonoBehaviour
     {
         [Header("AI Behaviour")]
         [SerializeField] float distanceToAttackPlayer = 25f;
+
+        bool destroyed = false;
         Transform playerTrans = null;
-        Turret turretComponent;
-        bool wait = false;
+        TurretMovement turretComponent;
+        DestructableComponent destructableComponent;
 
         private void Awake()
         {
-            turretComponent = GetComponent<Turret>();
+            turretComponent = GetComponent<TurretMovement>();
+            destructableComponent = GetComponent<DestructableComponent>();
+            destructableComponent.OnDestroy += StopAttack;
+        }
+
+        private void Start()
+        {
+            StartCoroutine(AttackPlayer());
+        }
+
+        void StopAttack()
+        {
+            destroyed = true;
         }
 
         public void SetPlayerTransform(Transform playerTransform)
@@ -24,14 +38,19 @@
             playerTrans = playerTransform;
         }
 
-        private void Update()
+        IEnumerator AttackPlayer()
         {
-            Vector3 offset = playerTrans.position - transform.position;
-            if (offset.sqrMagnitude < distanceToAttackPlayer * distanceToAttackPlayer)
+            while (!destroyed)
             {
-                turretComponent.AimToShoot(playerTrans.position);
+                Vector3 offset = playerTrans.position - transform.position;
+                if (offset.sqrMagnitude < distanceToAttackPlayer * distanceToAttackPlayer)
+                {
+                    turretComponent.AimToShoot(playerTrans.position);
+                }
+                yield return null;
             }
         }
+
     }
 
 }
