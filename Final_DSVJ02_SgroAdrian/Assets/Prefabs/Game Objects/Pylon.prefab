@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3322977448210902467}
   - component: {fileID: 3322977448210902466}
   - component: {fileID: 3322977448210902464}
+  - component: {fileID: 2685345492920516857}
   m_Layer: 10
   m_Name: Pylon
   m_TagString: Untagged
@@ -58,7 +59,7 @@ Animator:
   m_GameObject: {fileID: 2512163840174284653}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d192b4f28d79e4d4fa47aa323befdbf7, type: 2}
+  m_Controller: {fileID: 9100000, guid: cb2f309e3b69b3e4e894ba921986a3c9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -80,7 +81,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsOnDestroy: 100
+--- !u!114 &2685345492920516857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512163840174284653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21640cfc8063254fbbf22934ca35b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyDecayTime: 5
   maxArmor: 12.5
+  maxShield: 0
+  shieldRecoverSpeed: 0
 --- !u!1 &3990396111185391626
 GameObject:
   m_ObjectHideFlags: 0

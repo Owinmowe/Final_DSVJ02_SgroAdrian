@@ -41,6 +41,9 @@ GameObject:
   - component: {fileID: 5935794697304911031}
   - component: {fileID: -1975873127904215672}
   - component: {fileID: -5274302969233733691}
+  - component: {fileID: 1214632095899454295}
+  - component: {fileID: 655241451876954992}
+  - component: {fileID: 313574273895882113}
   m_Layer: 10
   m_Name: Enemy Turret
   m_TagString: Untagged
@@ -91,6 +94,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToAttackPlayer: 25
+--- !u!114 &1214632095899454295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935794697305206935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21640cfc8063254fbbf22934ca35b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyDecayTime: 5
+  maxArmor: 50
+  maxShield: 0
+  shieldRecoverSpeed: 0
+--- !u!65 &655241451876954992
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935794697305206935}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.61, y: 2.1, z: 3.82026}
+  m_Center: {x: 0, y: 0.100000024, z: -0.049870014}
+--- !u!95 &313574273895882113
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935794697305206935}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b22efcf5ab590ab449fa06b4f2991572, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5935794697305206941
 GameObject:
   m_ObjectHideFlags: 0

@@ -122,8 +122,9 @@ GameObject:
   - component: {fileID: 1648018054625212335}
   - component: {fileID: 1648018054625212305}
   - component: {fileID: 1648018054625212308}
-  - component: {fileID: 921309211}
   - component: {fileID: 5564208022366995972}
+  - component: {fileID: 3674862983726774945}
+  - component: {fileID: 921309211}
   m_Layer: 9
   m_Name: Player Tank
   m_TagString: Untagged
@@ -168,7 +169,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648018054625212310}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -204,9 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa06ffb1465c5a40ab6c4bfd80d980a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxArmor: 100
-  maxShield: 50
-  shieldRecoverSpeed: 0.5
   bodyMovementSpeed: 10
   bodyRotationSpeed: 1
   groundCorrectionSpeed: 5
@@ -214,25 +212,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 2048
---- !u!95 &921309211
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648018054625212310}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b22efcf5ab590ab449fa06b4f2991572, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5564208022366995972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +225,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 1648018052871283940}
-  turretRotationSpeed: 1
+  turretRotationSpeed: 5
+  cooldownBetweenTargets: 0.25
+--- !u!114 &3674862983726774945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648018054625212310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21640cfc8063254fbbf22934ca35b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyDecayTime: 5
+  maxArmor: 100
+  maxShield: 50
+  shieldRecoverSpeed: 0.5
+--- !u!95 &921309211
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648018054625212310}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a68645401ffb5bf40a7a22104b555e35, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1648018052871283940
 MonoBehaviour:
   m_ObjectHideFlags: 0
