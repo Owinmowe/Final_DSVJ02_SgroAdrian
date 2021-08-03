@@ -31,10 +31,10 @@
 
             IEnumerator whiteScreenFade()
             {
-                while (whiteScreen.color.a + Time.deltaTime < 1)
+                while (whiteScreen.color.a + Time.unscaledDeltaTime < 1)
                 {
-                    whiteScreen.color = new Color(whiteScreen.color.r, whiteScreen.color.g, whiteScreen.color.b, whiteScreen.color.a + Time.deltaTime);
-                    textComponent.color = new Color(textComponent.color.r, textComponent.color.g, textComponent.color.b, textComponent.color.a + Time.deltaTime);
+                    whiteScreen.color = new Color(whiteScreen.color.r, whiteScreen.color.g, whiteScreen.color.b, whiteScreen.color.a + Time.unscaledDeltaTime);
+                    textComponent.color = new Color(textComponent.color.r, textComponent.color.g, textComponent.color.b, textComponent.color.a + Time.unscaledDeltaTime);
                     yield return null;
                 }
                 whiteScreen.color = Color.white;
@@ -43,10 +43,10 @@
                 {
                     yield return null;
                 }
-                while (whiteScreen.color.a - Time.deltaTime > 0)
+                while (whiteScreen.color.a - Time.unscaledDeltaTime > 0)
                 {
-                    whiteScreen.color = new Color(whiteScreen.color.r, whiteScreen.color.g, whiteScreen.color.b, whiteScreen.color.a - Time.deltaTime);
-                    textComponent.color = new Color(textComponent.color.r, textComponent.color.g, textComponent.color.b, whiteScreen.color.a - Time.deltaTime);
+                    whiteScreen.color = new Color(whiteScreen.color.r, whiteScreen.color.g, whiteScreen.color.b, whiteScreen.color.a - Time.unscaledDeltaTime);
+                    textComponent.color = new Color(textComponent.color.r, textComponent.color.g, textComponent.color.b, whiteScreen.color.a - Time.unscaledDeltaTime);
                     yield return null;
                 }
                 whiteScreen.color = new Color(whiteScreen.color.r, whiteScreen.color.g, whiteScreen.color.b, 0);
@@ -70,10 +70,10 @@
 
             IEnumerator WhiteScreenUnfadeCoroutine()
             {
-                while (whiteScreen.color.a - Time.deltaTime > 0)
+                while (whiteScreen.color.a - Time.unscaledDeltaTime > 0)
                 {
-                    whiteScreen.color = new Color(whiteScreen.color.r, whiteScreen.color.g, whiteScreen.color.b, whiteScreen.color.a - Time.deltaTime);
-                    textComponent.color = new Color(textComponent.color.r, textComponent.color.g, textComponent.color.b, whiteScreen.color.a - Time.deltaTime);
+                    whiteScreen.color = new Color(whiteScreen.color.r, whiteScreen.color.g, whiteScreen.color.b, whiteScreen.color.a - Time.unscaledDeltaTime);
+                    textComponent.color = new Color(textComponent.color.r, textComponent.color.g, textComponent.color.b, whiteScreen.color.a - Time.unscaledDeltaTime);
                     yield return null;
                 }
                 whiteScreen.color = new Color(whiteScreen.color.r, whiteScreen.color.g, whiteScreen.color.b, 0);
