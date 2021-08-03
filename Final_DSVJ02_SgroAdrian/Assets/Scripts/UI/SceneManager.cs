@@ -9,8 +9,8 @@
 
         [SerializeField] float minTimeToLoadScene = 1f;
         [SerializeField] UI.UILoadingScreen uI_LoadingScreen = null;
-        int lastSessionScore = 0;
-        int lastSessionTime = 0;
+
+        ArenaData lastSessionData = new ArenaData();
 
         public void LoadSceneAsync(string sceneName)
         {
@@ -31,7 +31,7 @@
 
             while (!ao.isDone)
             {
-                timeLoading += Time.deltaTime;
+                timeLoading += Time.unscaledDeltaTime;
                 loadingProgress = ao.progress + 0.1f;
                 loadingProgress = loadingProgress * timeLoading / minTimeToLoadScene;
 
@@ -46,24 +46,17 @@
 
         }
 
-        public void SetLastSessionTime(int time)
+        public void SetLastSessionArenaData(bool survived, int points, int pylons, float distance)
         {
-            lastSessionTime = time;
+            lastSessionData.survived = survived;
+            lastSessionData.points = points;
+            lastSessionData.pylonsDestroyed = pylons;
+            lastSessionData.distanceMoved = distance;
         }
 
-        public int GetLastSessionTime()
+        public ArenaData GetLastSessionArenaData()
         {
-            return lastSessionTime;
-        }
-
-        public void SetLastSessionScore(int score)
-        {
-            lastSessionScore = score;
-        }
-
-        public int GetLastSessionScore()
-        {
-            return lastSessionScore;
+            return lastSessionData;
         }
 
         public void WhiteScreenUnfade()
