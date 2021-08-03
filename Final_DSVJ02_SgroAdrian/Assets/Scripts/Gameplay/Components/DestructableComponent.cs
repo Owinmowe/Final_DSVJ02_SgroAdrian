@@ -22,7 +22,8 @@
         bool shieldWorking = true;
 
         Animator anim;
-        Collider col; 
+
+        bool alive = true;
 
         public Action OnDestroy;
         public Action OnBodyDamage;
@@ -31,7 +32,6 @@
         private void Awake()
         {
             anim = GetComponent<Animator>();
-            col = GetComponent<Collider>();
         }
 
         private void Start()
@@ -60,6 +60,7 @@
 
         public void TakeDamage(float damage)
         {
+            if (!alive) return;
             if (currentShield > 0)
             {
                 currentShield -= damage;
@@ -79,9 +80,9 @@
                 currentArmor -= damage;
                 if (currentArmor < 0)
                 {
+                    alive = false;
                     anim.SetTrigger("Body Destroyed");
                     OnDestroy?.Invoke();
-                    col.enabled = false;
                     Destroy(gameObject, bodyDecayTime);
                 }
                 else

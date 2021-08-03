@@ -1,8 +1,8 @@
 namespace MarsArena
 {
-    using System.Collections;
-    using System.Collections.Generic;
+    using System;
     using UnityEngine;
+    using UnityEngine.EventSystems;
 
     [RequireComponent(typeof(TankMovement))]
     public class PlayerInput : MonoBehaviour
@@ -13,6 +13,7 @@ namespace MarsArena
 
         TankMovement tankComponent = null;
         // Start is called before the first frame update
+        public Action OnPausedGame;
 
         private void Awake()
         {
@@ -32,7 +33,7 @@ namespace MarsArena
             {
                 tankComponent.Rotate(hor);
             }
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 float x = Input.GetAxis("Mouse X");
                 float y = Input.GetAxis("Mouse Y");
@@ -45,6 +46,11 @@ namespace MarsArena
                     tankComponent.TryToShoot(hit.point);
                 }
             }
+        }
+
+        public void PauseGame()
+        {
+            OnPausedGame?.Invoke();
         }
     }
 }
