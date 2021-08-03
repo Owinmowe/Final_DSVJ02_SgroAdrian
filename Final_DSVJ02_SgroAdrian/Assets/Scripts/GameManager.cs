@@ -42,12 +42,20 @@
         public Action<float> OnPlayerMoved;
         public Action<int> OnEnemyDestroyed;
         public Action<float, float> OnPlayerLifeChanged;
+        public float playerMaxArmor { get; set; } = 0;
+        public float playerMaxShield { get; set; } = 0;
 
         bool gamePaused = false;
         int playerTotalPoints = 0;
         int playerPylonsDestroyed = 0;
         float distanceMoved = 0;
         float currentTime = 0;
+
+        private void Awake()
+        {
+            playerMaxArmor = playerTank.GetComponent<DestructableComponent>().GetMaxArmor();
+            playerMaxShield = playerTank.GetComponent<DestructableComponent>().GetMaxShield();
+        }
 
         // Start is called before the first frame update
         void Start()

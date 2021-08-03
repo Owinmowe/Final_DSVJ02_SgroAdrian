@@ -91,7 +91,11 @@
                     OnBodyDamage?.Invoke();
                 }
             }
-
+            OnLifeChanged?.Invoke(currentArmor, currentShield);
         }
+
+        public float GetMaxArmor() => maxArmor;
+        public float GetMaxShield() => maxShield;
+
     }
 }

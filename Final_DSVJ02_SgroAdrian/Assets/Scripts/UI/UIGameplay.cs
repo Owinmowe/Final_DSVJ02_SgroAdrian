@@ -7,6 +7,7 @@
         using System.Collections;
         using TMPro;
         using UnityEngine;
+        using UnityEngine.UI;
 
         public class UIGameplay : MonoBehaviour
         {
@@ -17,6 +18,10 @@
             [SerializeField] TextMeshProUGUI pointsTextComponent = null;
             [SerializeField] TextMeshProUGUI movementTextComponent = null;
             [SerializeField] TextMeshProUGUI timeTextComponent = null;
+            [SerializeField] Image EnergyBarImage = null;
+            [SerializeField] Image EnergyShieldImage = null;
+            float playerMaxArmor = 0;
+            float playerMaxShield = 0;
 
             [Header("Pause HUD")]
             [SerializeField] UIAnimationComponent pauseHUDGroup = null;
@@ -42,7 +47,8 @@
 
             private void Start()
             {
-                
+                playerMaxArmor = gm.playerMaxArmor;
+                playerMaxShield = gm.playerMaxShield;
             }
 
             void NextStartingNumber()
@@ -83,7 +89,8 @@
 
             void UpdatePlayerLifeHUD(float armor, float shield)
             {
-
+                EnergyBarImage.fillAmount = armor / playerMaxArmor;
+                EnergyShieldImage.fillAmount = shield / playerMaxShield;
             }
 
             void UpdatePointsText(int points)
