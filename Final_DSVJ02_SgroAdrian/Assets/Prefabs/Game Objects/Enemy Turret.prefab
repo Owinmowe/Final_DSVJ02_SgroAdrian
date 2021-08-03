@@ -93,7 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935416e1cfb3b3745ac1d266da89f318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsOnDestroy: 50
   distanceToAttackPlayer: 25
+  distanceToMoveToPlayer: 50
 --- !u!114 &1214632095899454295
 MonoBehaviour:
   m_ObjectHideFlags: 0

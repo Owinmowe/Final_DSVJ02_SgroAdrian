@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 6409398318440938661}
   - component: {fileID: 6409398318440938655}
   - component: {fileID: 6409398318440938660}
+  - component: {fileID: -2821617714996093115}
   - component: {fileID: 4729375179450291991}
   - component: {fileID: 8219387447569875442}
   - component: {fileID: 5632928359968135979}
@@ -195,6 +196,22 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &-2821617714996093115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6409398318440938662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093304be9bb94d7468a9970edeaaf164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsOnDestroy: 200
+  distanceToAttackPlayer: 25
+  distanceToMoveToPlayer: 50
+  moveDirectionTolerance: 5
 --- !u!114 &4729375179450291991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +277,7 @@ MonoBehaviour:
   currentWeaponsConfigs:
   - {fileID: 11400000, guid: 02ebe13a48109da499ff3b9d3a2fb1e6, type: 2}
   projectileSpawnPosition: {fileID: 5632928360439698905}
-  projectileColor: {r: 0, g: 0.6212287, b: 1, a: 1}
+  projectileColor: {r: 1, g: 0, b: 0.04480028, a: 1}
 --- !u!1001 &6409398316814774646
 PrefabInstance:
   m_ObjectHideFlags: 0
